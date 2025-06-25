@@ -21,6 +21,7 @@ class View(ft.UserControl):
         self._ddStazArrivo = None
         self._ddStazPartenza = None
         self._btnCrea = None
+        self._btnCercaPercorso = None
 
     def load_interface(self):
         # title
@@ -40,8 +41,8 @@ class View(ft.UserControl):
         self._btnCrea = ft.ElevatedButton(text="Crea Grafo", on_click=self._controller.handleCreaGrafo)
         self._ddStazPartenza = ft.Dropdown(label="Stazione di Partenza")
         self._ddStazArrivo = ft.Dropdown(label="Stazione di Arrivo")
-        self._btnCalcola = ft.ElevatedButton(text="Calcola Raggiungibili", on_click=self._controller.handleCercaRaggiungibili)
-
+        self._btnCalcola = ft.ElevatedButton(text="Calcola Raggiungibili", on_click=self._controller.handleCercaRaggiungibili, disabled=True)
+        self._btnCercaPercorso = ft.ElevatedButton(text="Cerca percorso", on_click=self._controller.handleCerca, disabled=True)
 
         #Load elements in DD
         self._controller.loadFermate(self._ddStazPartenza)
@@ -52,6 +53,7 @@ class View(ft.UserControl):
                        self._ddStazPartenza,
                        self._ddStazArrivo,
                        self._btnCalcola,
+                       self._btnCercaPercorso,
                        ], alignment=ft.MainAxisAlignment.CENTER, spacing=30)
 
         # Row with listview
